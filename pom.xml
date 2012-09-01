@@ -33,7 +33,7 @@ THE SOFTWARE.
 
     <groupId>org.hudsonci.plugins</groupId>
     <artifactId>BlameSubversion</artifactId>
-    <version>1.26-h-1-SNAPSHOT</version>
+    <version>1.26-h-1</version>
   
     <packaging>hpi</packaging>
     <name>Hudson Blame Subversion Plugin</name>

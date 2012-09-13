@@ -5,8 +5,7 @@ import javax.net.ssl.TrustManager;
 import org.tmatesoft.svn.core.SVNErrorMessage;
 import org.tmatesoft.svn.core.SVNException;
 import org.tmatesoft.svn.core.SVNURL;
-import org.tmatesoft.svn.core.auth.ISVNAuthenticationManager;
-import org.tmatesoft.svn.core.auth.ISVNAuthenticationOutcomeListener;
+
 import org.tmatesoft.svn.core.auth.ISVNAuthenticationProvider;
 import org.tmatesoft.svn.core.auth.ISVNProxyManager;
 import org.tmatesoft.svn.core.auth.SVNAuthentication;
@@ -19,11 +18,15 @@ import org.tmatesoft.svn.core.io.SVNRepository;
  * 
  * @author tang,Kohsuke Kawaguchi
  */
-public class FilterSVNAuthenticationManager implements ISVNAuthenticationManager {
+public class FilterSVNAuthenticationManager implements hudson.scm.ISVNAuthenticationManager {
     protected ISVNAuthenticationManager core;
 
     public FilterSVNAuthenticationManager(ISVNAuthenticationManager core) {
         this.core = core;
+    }
+    
+    public FilterSVNAuthenticationManager(org.tmatesoft.svn.core.auth.ISVNAuthenticationManager core) {
+        this.core = (ISVNAuthenticationManager) core;
     }
 
     public void setAuthenticationProvider(ISVNAuthenticationProvider provider) {
